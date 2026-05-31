@@ -1,0 +1,40 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+export const metadata: Metadata = {
+  title: "Garage Conversions Peterborough | RPV Construction",
+  description: "RPV Construction convert garages into beautiful living spaces across Peterborough. Bedrooms, home offices, gyms and more — fully managed with Building Control sign-off.",
+};
+export default function ServicePage() {
+  const items = "Our garage conversion services include:,Full structural assessment and Building Control,Damp proofing to floor and walls,Floor insulation and screed,Wall and ceiling insulation,New windows and doors,Electrical installation and lighting,Plastering and decoration,Tiling and flooring".split(",");
+  const heading = items[0];
+  const list = items.slice(1);
+  return (
+    <>
+      <div style={{ padding: "120px 24px 60px", background: "#1a3350", textAlign: "center" }}>
+        <span style={{ color: "#74be43", fontSize: "0.8rem", fontWeight: 700, letterSpacing: "3px", textTransform: "uppercase" }}>Our Services</span>
+        <div style={{ fontSize: "3rem", margin: "16px 0" }}>🚗</div>
+        <h1 style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 900, color: "#fff" }}>Garage Conversions</h1>
+        <p style={{ color: "#94a3b8", maxWidth: 600, margin: "16px auto 0", lineHeight: 1.7 }}>RPV Construction convert garages into beautiful living spaces across Peterborough. Bedrooms, home offices, gyms and more — fully managed with Building Control sign-off.</p>
+      </div>
+      <section style={{ padding: "80px 24px", background: "#152a42" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto" }}>
+          <p style={{ color: "#cbd5e1", lineHeight: 1.9, fontSize: "1.05rem", marginBottom: 48 }}>A garage conversion is one of the most cost-effective ways to add space and value to your home. We handle the full process — from initial survey and Building Control application through to insulation, electrics, plastering and finishing. No hidden costs, no disappearing acts.</p>
+          <h2 style={{ color: "#fff", fontWeight: 800, fontSize: "1.5rem", marginBottom: 24 }}>{heading}</h2>
+          <ul style={{ listStyle: "none", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 14 }}>
+            {list.map((item: string, i: number) => (
+              <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: 10, padding: "14px 18px", background: "rgba(34,66,103,0.4)", borderRadius: 8, border: "1px solid rgba(116,190,67,0.1)" }}>
+                <span style={{ color: "#74be43", marginTop: 2 }}>✓</span>
+                <span style={{ color: "#cbd5e1", fontSize: "0.92rem" }}>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <div style={{ marginTop: 60, textAlign: "center", padding: "40px", background: "rgba(12,106,56,0.15)", borderRadius: 12, border: "1px solid rgba(116,190,67,0.2)" }}>
+            <h3 style={{ color: "#fff", fontWeight: 800, fontSize: "1.3rem", marginBottom: 12 }}>Get a free quote for Garage Conversions</h3>
+            <p style={{ color: "#94a3b8", marginBottom: 24 }}>We cover Peterborough, Stamford, Bourne and all surrounding areas. No obligation.</p>
+            <Link href="/contact" style={{ background: "#74be43", color: "#152a42", padding: "14px 32px", borderRadius: 8, fontWeight: 800, textDecoration: "none" }}>Get a Free Quote</Link>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}

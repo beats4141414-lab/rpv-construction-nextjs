@@ -1,29 +1,37 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&display=swap');
+@import "tailwindcss";
 
 :root {
-  --navy-deepest: #090f1a;
-  --navy-deep:    #0d1e30;
-  --navy-mid:     #152a42;
-  --navy-light:   #1e3a55;
+  --cream:        #f7f4ef;
+  --cream-dark:   #ede9e2;
+  --white:        #ffffff;
+  --ink:          #0c0c0c;
+  --ink-mid:      #3a3a3a;
+  --ink-light:    #6b6b6b;
+  --ink-faint:    #9a9a9a;
   --green:        #74be43;
-  --green-dim:    #5a9933;
-  --sky:          #81c2e2;
-  --white:        #f5f7fa;
-  --muted:        #7a8fa6;
-  --border:       rgba(116,190,67,0.1);
-  --font-display: 'Bebas Neue', sans-serif;
-  --font-body:    'DM Sans', sans-serif;
+  --green-dark:   #4d8a27;
+  --navy:         #0d1e30;
+  --navy-deep:    #070f1a;
+  --border-light: rgba(0,0,0,0.07);
+  --border-dark:  rgba(255,255,255,0.08);
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-html { scroll-behavior: smooth; font-size: 16px; }
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
 
 body {
-  background: var(--navy-deepest);
-  color: var(--white);
-  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
   font-weight: 400;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
@@ -37,51 +45,52 @@ body {
   }
 }
 
-::selection { background: var(--green); color: var(--navy-deepest); }
+::selection {
+  background: var(--green);
+  color: #fff;
+}
 
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--navy-deepest); }
-::-webkit-scrollbar-thumb { background: rgba(116,190,67,0.4); border-radius: 2px; }
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--ink-faint); border-radius: 2px; }
 
 *:focus-visible {
   outline: 1.5px solid var(--green);
   outline-offset: 3px;
-  border-radius: 3px;
+  border-radius: 2px;
 }
 
 /* Scroll reveal */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1),
-              transform 0.7s cubic-bezier(0.16,1,0.3,1);
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1),
+              transform 0.8s cubic-bezier(0.16,1,0.3,1);
 }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-
-/* Card interaction */
-.card-lift {
-  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1),
-              border-color 0.3s ease,
-              box-shadow 0.3s ease;
-}
-.card-lift:hover {
-  transform: translateY(-6px);
-  border-color: rgba(116,190,67,0.35) !important;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(116,190,67,0.1);
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* Gradient text utility */
-.text-gradient {
-  background: linear-gradient(135deg, #74be43 0%, #81c2e2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* Utility */
+.label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
 }
 
-/* Section divider line */
-.divider {
-  width: 48px;
-  height: 2px;
-  background: linear-gradient(90deg, #74be43, transparent);
-  margin-bottom: 24px;
-}
+/* Hover utilities for server components */
+.link-arrow { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-size: 0.8rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; border-bottom: 1px solid currentColor; padding-bottom: 2px; transition: color 0.2s; }
+.link-arrow:hover { color: #74be43 !important; }
+.link-ghost { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-size: 0.75rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s; }
+.link-ghost:hover { color: #0c0c0c !important; }
+.link-ghost-light { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-size: 0.75rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s; }
+.link-ghost-light:hover { color: #f7f4ef !important; }
+.nav-link-footer:hover { color: #f7f4ef !important; }
+.service-img { transition: transform 0.6s ease; }
+.service-img:hover { transform: scale(1.03); }
+.card-item { transition: border-color 0.25s; }
+.card-item:hover { border-color: rgba(116,190,67,0.2) !important; }
+.cta-btn:hover { background: #74be43 !important; }
+.cta-btn-dark:hover { color: #f7f4ef !important; }
